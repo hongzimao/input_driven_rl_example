@@ -185,7 +185,7 @@ def main():
     saver = tf.train.Saver(max_to_keep=args.num_saved_models)
     summary_ops, summary_vars = build_load_balance_tf_summaries()
     writer = tf.summary.FileWriter(
-        args.result_folder + args.model_folder + \
+        args.result_folder + \
         time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
 
     # load trained model
