@@ -1,5 +1,7 @@
 # Input-dependent Baseline
-Input-dependent baseline for reducing the variance from external input processes. Paper: https://openreview.net/forum?id=Hyg1G2AqtQ
+Input-dependent baseline for reducing the variance from external input processes.
+
+Paper: https://openreview.net/forum?id=Hyg1G2AqtQ
 
 ### Example
 - Regular A2C with state-dependent baseline on the load-balancing environment
