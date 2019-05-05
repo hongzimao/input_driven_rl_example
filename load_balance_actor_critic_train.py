@@ -35,8 +35,7 @@ def training_agent(agent_id, params_queue, reward_queue, adv_queue, gradient_que
     # collect experiences
     while True:
         # get parameters from master
-        (actor_params, critic_params, service_rates, \
-        num_stream_jobs, max_time, entropy_weight) = \
+        (actor_params, critic_params, entropy_weight) = \
             params_queue.get()
 
         # synchronize model parameters
@@ -214,13 +213,11 @@ def main():
         # synchronize the model parameters for each training agent
         actor_params = actor_agent.get_params()
         critic_params = critic_agent.get_params()
-        # synchronize the agents to have the same max step
-        max_time = generate_coin_flips(reset_prob) # convert into seconds
 
         # send out parameters to training agents
         for i in range(args.num_agents):
-            params_queues[i].put([actor_params, critic_params, \
-                service_rates, num_stream_jobs, max_time, entropy_weight])
+            params_queues[i].put([
+                actor_params, critic_params, entropy_weight])
 
         # storage for advantage computation
         all_reward, all_values, all_wall_time, all_diff_time, all_eps_duration, \
@@ -340,14 +337,6 @@ def main():
         # decrease entropy weight
         entropy_weight = decrease_var(entropy_weight,
             args.entropy_weight_min, args.entropy_weight_decay)
-
-        # decrease reset probability
-        reset_prob = decrease_var(reset_prob,
-            args.reset_prob_min, args.reset_prob_decay)
-
-        # increase number of stream jobs
-        num_stream_jobs = increase_var(num_stream_jobs,
-            args.num_stream_jobs_max, args.num_stream_jobs_grow)
 
         if ep % args.model_save_interval == 0:
             saver.save(sess, args.model_folder + "model_ep_" + str(ep) + ".ckpt")
