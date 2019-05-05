@@ -323,7 +323,7 @@ def main():
             summary_vars[7]: entropy_weight,
             summary_vars[8]: reset_prob,
             summary_vars[9]: num_stream_jobs,
-            summary_vars[10]: np.mean([t >= max_time for t in all_eps_duration]),
+            summary_vars[10]: np.mean([t >= 0 for t in all_eps_duration]),
             summary_vars[11]: np.mean(all_eps_finished_jobs),
             summary_vars[12]: np.mean(all_eps_unfinished_jobs),
             summary_vars[13]: np.mean(all_eps_finished_work),
