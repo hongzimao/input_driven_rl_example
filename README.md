@@ -14,7 +14,7 @@ python3 load_balance_actor_critic_train.py --num_workers 10 --service_rates 0.15
 python3 load_balance_actor_multi_critic_train.py --num_workers 10 --service_rates 0.15 0.25 0.35 0.45 0.55 0.65 0.75 0.85 0.95 1.05 --result_folder ./results/10_value_networks/ --model_folder ./results/parameters/10_value_networks/
 ```
 
-- Monitor learning progress: Tensorboard in `./results/`; policy perforamnce on unseen traces plotted in `test_performance.png` in `./results/parameters/`.
+- Monitor learning progress: Tensorboard in `./results/`; policy perforamnce on unseen traces plotted as `test_performance.png` in `./results/parameters/`.
 
 - Example results: training Tensorboard screenshot in `./figures/training.png`; testing plots in `./figures/regular_value_network_testing.png` and `./figures/10_value_networks_testing.png`.
 
