@@ -16,5 +16,7 @@ python3 load_balance_actor_multi_critic_train.py --num_workers 10 --service_rate
 
 - Monitor learning progress: Tensorboard in `./results/`; policy perforamnce on unseen traces plotted in `test_performance.png` in `./results/parameters/`.
 
+- Example results: training Tensorboard screenshot in `./figures/training.png`; testing plots in `./figures/regular_value_network_testing.png` and `./figures/10_value_networks_testing.png`.
+
 ### Dependencies
 Python 3.6, Tensorflow 1.2.1, Numpy 1.14.5
